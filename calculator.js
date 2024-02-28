@@ -20,12 +20,37 @@ var services = {
     maxPrice: maxPrice
 
 };
-// Методи minPrice() та maxPrice() поки не зроблені
+// Метод minPrice() рахує найменшу ціну послуг
 function minPrice() {
+    let compareItem;
+    let result;
+    for (let compareKey in this) {
+        compareItem = parseFloat(this[compareKey]);
+        break;
+    }
+    for (let key in this) {
+        if (compareItem >= parseFloat(this[key]) && typeof this[key] !== 'function') {
+            result = parseFloat(this[key]);
+        }
 
+    }
+    console.log("Minimal price is: " + result + " grn");
 }
-function  maxPrice() {
 
+// Метод maxPrice() рахує найбільшу ціну послуг
+function  maxPrice() {
+    let compareItem;
+    let result;
+    for (let compareKey in this) {
+        compareItem = parseFloat(this[compareKey]);
+        break;
+    }
+    for (let key in this) {
+        if (compareItem <= parseFloat(this[key]) && typeof this[key] !== 'function') {
+            result = parseFloat(this[key]);
+        }
+    }
+    console.log("Maximal price is: " + result + " grn");
 }
 
 // Метод отримання суми всіх наявних послуг
@@ -36,11 +61,11 @@ function sum() {
             c += parseInt(this[key]);
         }
     }
-    console.log("Total price: ",c);
+    console.log("Total price: " + c + " grn");
 }
 
-// services['Розбити скло'] = "200 грн";
+services['Розбити скло'] = "200 грн";
 // delete services['Розбити скло'];
 services.price();
-// services.minPrice();
-// services.maxPrice();
+services.minPrice();
+services.maxPrice();
